@@ -47,5 +47,33 @@ namespace C_sharp
                 Console.WriteLine(e.Message);
             }
         }
+        public void GetAllProducts()
+        {
+            var products = dbContext.Products.ToList();
+            foreach (var item in products)
+            {
+                Console.WriteLine($" ProductID:{item.ProductID}  Name:{item.Name}  Price:{item.Price}");
+            }
+        }
+
+        public void DeleteProduct(int id)
+        {
+
+            Product deleteProduct = (Product)dbContext.Products.Where(p => p.Id == id)
+                                         .Single();
+
+            try
+            {
+                dbContext.Products.Remove(deleteProduct);
+                dbContext.SaveChanges();
+                Console.WriteLine("Delete success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+
+        }
     }
 }

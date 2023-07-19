@@ -4,4 +4,4 @@ using C_sharp;
 
 
 ProductController productController = new ProductController();
-productController.CreateNewProduct();
+productController.GetAllProducts();
